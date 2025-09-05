@@ -56,7 +56,15 @@ endif(${OpenRTM_FOUND})
 
 # Universal settings
 
-find_package(MRPT REQUIRED base obs gui slam hwdrivers maps nav)
+#find_package(MRPT REQUIRED base obs gui slam hwdrivers maps nav)
+# find_package(MRPT REQUIRED base obs gui slam hwdrivers maps)
+find_package(mrpt-obs REQUIRED)
+find_package(mrpt-maps REQUIRED)
+find_package(mrpt-gui REQUIRED)
+find_package(mrpt-slam REQUIRED)
+find_package(mrpt-hwdrivers REQUIRED)
+find_package(mrpt-io REQUIRED)
+find_package(mrpt-nav REQUIRED)
 
 
 

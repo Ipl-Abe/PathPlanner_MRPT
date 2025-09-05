@@ -16,6 +16,7 @@
  
 #include <iostream>
 
+/*
 #include <mrpt/maps/COccupancyGridMap2D.h>
 #ifdef WIN32
 #include <mrpt/nav/planners/CPathPlanningCircularRobot.h>
@@ -23,6 +24,32 @@
 #include <mrpt/nav/planners/PlannerSimple2D.h>
 #endif
 #include <mrpt/poses/CPose2D.h>
+*/
+
+// MRPT 2.x includes
+#include <mrpt/gui/CDisplayWindow.h>     // もしGUIを使う場合
+#include <mrpt/bayes/CParticleFilter.h>
+
+#include <mrpt/poses/CPose2D.h>
+#include <mrpt/poses/CPosePDFGaussian.h>
+#include <mrpt/system/CTicTac.h>         // utils → system に移動
+
+#include <mrpt/slam/CMonteCarloLocalization2D.h>  // ここ重要!!
+
+#include <mrpt/maps/COccupancyGridMap2D.h>
+#include <mrpt/maps/CMultiMetricMap.h>
+
+#include <mrpt/obs/CActionRobotMovement2D.h>
+#include <mrpt/obs/CObservation2DRangeScan.h>
+#include <mrpt/obs/CSensoryFrame.h>
+#include <mrpt/obs/CObservationOdometry.h>
+#include <mrpt/obs/CActionCollection.h>
+
+#include <Eigen/Core>
+#include <Eigen/Geometry>
+
+#include <mrpt/config/CConfigFile.h>
+
 
 using namespace mrpt;
 //using namespace mrpt::slam;

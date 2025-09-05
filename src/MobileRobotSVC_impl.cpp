@@ -8,6 +8,7 @@
 #include "MobileRobotSVC_impl.h"
 #include <iostream>
 
+/*
 #include <mrpt/slam/COccupancyGridMap2D.h>
 #ifdef WIN32
 #include <mrpt/nav/planners/CPathPlanningCircularRobot.h>
@@ -15,9 +16,14 @@
 #include <mrpt/nav/planners/PlannerSimple2D.h>
 #endif
 #include <mrpt/poses/CPose2D.h>
+*/
+
 
 
 #include "PathPlanner_MRPT.h"
+
+#include <mrpt/maps/COccupancyGridMap2D.h> 
+#include <mrpt/nav/planners/PlannerSimple2D.h>
 
 using namespace mrpt;
 using namespace mrpt::slam;
@@ -58,7 +64,8 @@ void PathPlannerSVC_impl::setGoal(const RTC::Pose2D & tp, const RTC::OGMap & map
 	goal.phi(tp.heading);
 	}
 
-void PathPlannerSVC_impl::OGMapToCOccupancyGridMap(RTC::OGMap ogmap, COccupancyGridMap2D *gridmap) {
+// void PathPlannerSVC_impl::OGMapToCOccupancyGridMap(RTC::OGMap ogmap, COccupancyGridMap2D *gridmap) {
+void PathPlannerSVC_impl::OGMapToCOccupancyGridMap(RTC::OGMap ogmap, mrpt::maps::COccupancyGridMap2D *gridmap) {
 	gridmap->setSize(
 		-ogmap.config.origin.position.x,
 		ogmap.map.width * ogmap.config.xScale - ogmap.config.origin.position.x,
